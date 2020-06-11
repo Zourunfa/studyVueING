@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<style>
+    .active{
+        color:red;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <!-- <h2 v-bind :class = "{类名：boolean}"></h2> -->
+        <button  id="btn1" v-on:click = "click"><h2 v-bind:class = "{active: isActive,line:false}" >{{message}}"nihoa"</h2></button>
+        <button  id="btn2" v-on:click = "click"><h2 v-bind:class = "getClass()" >{{message}}"nihoa"</h2></button>
+    </div>
+    
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message:"你好",
+                active:"active",
+                isActive:true
+            },
+            methods: {
+                click:function(){
+                    this.isActive=!this.isActive
+                    console.log(this.isActive)
+                },
+                getClass:function(){
+                    return {active: this.isActive,line:false}
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

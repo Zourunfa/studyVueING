@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn v-bind:cnum = "num"></cpn>
+    </div>
+    <template id = "cpn">
+        <div>
+            {{cnum}}
+        </div>
+    </template>
+    <script>
+        // 父传子
+        const cpn = {
+            template: '#cpn',
+            props:{
+                // 1,类型限制 type:
+                // 2,是否必须传 require: 布尔值
+                // 3,默认值 default: 如果是个数组的话必须使用函数传如下
+
+                cnum:{
+                    type:Array,//要求是个数组类型
+                    require: true,
+                    default(){
+                        return ['1']
+                    }
+                }
+                
+            //   
+            },
+            data(){
+                return {
+
+                }
+            }
+
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                num: ['1','2','3']
+            },
+            components:{
+                cpn,
+            }
+        });
+    </script>
+</body>
+
+</html>

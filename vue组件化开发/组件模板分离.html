@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <div id="app">
+        <cpn1></cpn1>
+    </div>
+
+    <!-- 1 -->
+    <!-- <script text="text/x-template" id ="cpn"> 
+        <div>
+            <h2> hahahhhah</h2>
+        </div>
+        
+    </script> -->
+
+    
+<!-- 2 -->
+    <template id = "cpn">
+        <div>
+            <h2> hahahhhah</h2>
+        </div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+
+        // 语法糖直接注册全局组件
+        Vue.component('cpn1', {
+            template: '#cpn'
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+           
+            
+        });
+    </script>
+</body>
+
+</html>

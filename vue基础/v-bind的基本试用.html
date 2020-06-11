@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div class="app">
+        <!-- <a v-bind:href="url">click me</a> -->
+        <a :href="url">click</a>
+    </div>
+
+
+    <script src="../vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+                url: "https://www.baidu.com",
+            }
+        });
+        // console.log(vm)
+    </script>
+</body>
+
+</html>

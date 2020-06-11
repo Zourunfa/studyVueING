@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn1></cpn1>
+    </div>
+
+    <script>
+
+        // 语法糖直接注册全局组件
+        Vue.component('cpn1', {
+            template: `
+            <div>
+                <h2>我是是是是标题</h2>
+                <p>123 </p>
+                <cpn1></cpn1>
+             </div>
+            `,
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            // 局部组件语法糖
+            component: {
+                'cpn2': {
+                    template: `
+            <div>
+                <h2>我是是是是标题</h2>
+                <p>123 </p>
+                <cpn1></cpn1>
+             </div>
+            `,
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

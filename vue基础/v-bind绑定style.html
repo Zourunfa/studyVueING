@@ -1,0 +1,66 @@
+<!-- <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 :style = "{key:value,css的属性：属性值}"></h2>
+        <h2 :style ="{fontSize : finalSize}">{{message}}</h2>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message:"阿锋",
+                finalSize:'100px'
+            },
+            methods: {}
+        });
+
+            console.log(vm)
+    </script>
+</body>
+
+</html> -->
+
+
+<!-- 数组语法 -->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 :style="[baseStyle]">{{message}}</h2>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message:"阿锋",
+                baseStyle: {backgroundColor: 'red'},
+                baseStyle1:{fontSize:'100px'}
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

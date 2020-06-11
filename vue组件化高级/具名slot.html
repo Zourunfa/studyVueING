@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+
+<body>
+
+    <div id="app">
+        <cpn><span slot="center">标题</span></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <slot><span>左边</span></slot>
+            <slot name="center"><span>中间</span></slot>
+            <slot><span>右边</span></slot>
+        </div>
+    </template>
+    <script>
+
+        const cpn = {
+            template:'#cpn'
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            components:{
+                cpn
+            }
+        });
+    </script>
+</body>
+
+</html>

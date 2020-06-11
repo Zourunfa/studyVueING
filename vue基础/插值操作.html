@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="../vue.js"></script> -->
+</head>
+<body>
+
+    <div id="app">
+        <div>123</div>
+        <img v-bind src="imgUrl" alt="">
+        <a v-bind src ="aHref">bili</a>
+    </div>
+
+
+    <script src="../vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message:"你好",
+                imgUrl: "https://www.baidu.com/img/bd_logo1.png?where=super",
+                aHref: "https://www.bilibili.com/video/BV15741177Eh?p=14"
+            }
+            // methods: {}
+        }); 
+        console.log(vm)
+    </script>
+</body>
+
+</body>
+
+</html>

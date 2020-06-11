@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+
+
+<body>
+    <div id="app">
+        <cpn ref="first"></cpn>
+        <cpn ref="second"></cpn>
+       
+    </div>
+
+    
+<template id="cpn">
+    <div>
+        我是子组件
+         <button @click="btnclick">显示</button>
+    </div>
+
+</template>
+    <script>
+
+        const cpn = {
+            template:'#cpn',
+            data(){
+                return{
+
+                }
+            },
+            methods: {
+                btnclick(){
+                    console.log(this.$parent)
+// 访问根组件
+                    console.log(this.$root)
+                }
+            },
+          
+
+
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+               
+            },
+            components:{
+                cpn
+            }
+
+        });
+    </script>
+</body>
+
+</html>

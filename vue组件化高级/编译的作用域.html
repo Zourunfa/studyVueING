@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+
+<body>
+
+    <div id="app">
+        <cpn v-show="isShow"><span slot="center">标题</span></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <slot><span>左边</span></slot>
+            <slot name="center"><span>中间</span></slot>
+            <slot><span>右边</span></slot>
+        </div>
+    </template>
+
+
+    <script>
+/**
+父组件模板的所有东西都会在父级作用域内编译，子组件模板所有的东西都会在子级
+作用域编译
+*/
+
+        const cpn = {
+            template:'#cpn',
+            data(){
+                return{
+                    isShow:true
+                }
+            }
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isShow:true
+            },
+            methods: {},
+            components:{
+                cpn
+            }
+        });
+    </script>
+</body>
+
+</html>

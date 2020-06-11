@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 父组件v-on接收子组件发生的事件 -->
+        <cpn v-on:itemclick = "cpnClick"></cpn>
+    </div>
+
+    <template id = "cpn">
+        <div>
+           <button v-for="item in categories" @click = "bCli(item)">
+               {{item.name}}
+            </button>
+        </div>
+    </template>
+
+    <script>
+        // 父传子
+        // 子组件
+        const cpn = {
+            template: '#cpn',
+            props:{
+              
+            },
+            data(){
+                return {
+                    categories:[
+                    {id:'1',name:'热门推荐'},
+                    {id:'2',name:'手机推荐'},
+                    {id:'3',name:'电脑推荐'}
+                    ]
+                }
+            },
+            methods:{
+                bCli(item){
+                    
+                    // 子组件发射一个事件,item是参数
+                    this.$emit('itemclick',item)
+                    
+                }
+            }
+
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                num: ['1','2','3']
+            },
+            components:{
+                cpn,
+            },
+            methods:{
+                cpnClick(item){
+                    console.log(item);
+                    
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

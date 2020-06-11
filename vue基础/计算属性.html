@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{first+' '+last}}</h2>
+        <h2>{{first}} {{last}}</h2>
+        <h2>{{getTwo()}}</h2>
+
+<!-- 计算属性 -->
+        <h2>{{mergeTwo}}</h2>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                first:'one',
+                last:'two'
+            },
+            // 计算属性
+            computed:{
+                // mergeTwo本质是一个属性
+                mergeTwo:function(){
+                    return this.first+' '+this.last
+                }
+            },
+            methods: {
+                getTwo(){
+                    return this.first+' '+this.last
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <h2>当前技术:{{counter}}</h2>
+        <!-- <button v-on:click="counter++">+</button> 
+        <button v-on:click="counter--">-</button> -->
+        <button v-on:click="add">+</button>
+        <button @click="sub">-</button>
+    </div>
+
+<script src="..\vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app", // 用于挂载要管理的元素
+        data:{
+            counter:0
+        },
+        methods:{
+            add:function(){
+                this.counter++
+                console.log(this)
+               
+                console.log('add被执行')
+            },
+            sub:function(){
+                this.counter--;
+                console.log("-1")
+            }
+        }
+    }) 
+</script>
+
+
+</script>
+</body>
+</html>
+
+
+<!-- 列表展示 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <ul>
+            <li v-for="item in movies">{{item}}</li>
+        </ul>
+    </div>
+
+<script src="..\vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app", // 用于挂载要管理的元素
+        data:{
+            message:"你好啊，你银河",
+            movies:['银翼杀手','大话西游','你妈卖批']
+        }
+    }) 
+</script>
+
+
+</script>
+</body>
+</html>  -->

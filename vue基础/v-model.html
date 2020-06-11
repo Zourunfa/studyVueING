@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type = "text" v-model = "message"> -->
+
+        <input type = "text" :value= "message"  v-on:input =vchange>
+ {{message}}
+
+        <label for = "male">
+            <input type = "radio" id ="male" name = "sex" value="男" v-model="sex">男
+        </label>
+
+        <label for = "female">
+            <input type = "radio" id ="female" name = "sex" value="女" v-model="sex">女
+        </label>
+        <br>
+        {{sex}}
+
+
+        <label for = "accept">
+            <input type = "checkbox" id = "accept" v-model = "isAgree" v-model = "isAgree">
+            接受
+            <br>
+        </label>
+            {{isAgree}}
+        <button :disabled ="!isAgree">下一步</button>
+<!-- 
+        <label for="hobbies">
+            <input type = "checkbox" value="篮球" v-model = "hobbies">篮球
+            <input type = "checkbox" value="足球" v-model = "hobbies">足球
+            <input type = "checkbox" value="游戏" v-model = "hobbies">游戏
+            {{hobbies}}
+        </label> -->
+
+        <label v-for = "item in currentValue"  :for = "item" >
+            <input  :id = "item" type = "checkbox" :value = "item" v-mode = "hobbies">  {{item}}
+        </label>
+        {{hobbies}}
+        
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message:'你好',
+                sex:'',
+                isAgree: false,
+                hobbies: [],
+                currentValue: ['篮球','足球','游戏']
+            },
+            methods: {
+                vchange(event){
+                    console.log('------')
+                    this.message = event.target.value
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

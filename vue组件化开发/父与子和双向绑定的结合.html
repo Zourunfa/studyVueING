@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn :number1 = "num1"  :number2 = "num2"
+        @num1change = "num1change" @num2change="num2change"></cpn>
+    </div>
+
+    <template id= "cpn">
+        <div>
+            <h2 >props:{{number1}}</h2> 
+            <h2> data :{{dnumber1}}</h2>
+            <!-- <input type="text" v-model="dnumber1"> -->
+            <input type = "text" :value="dnumber1" @input ="num1Input">
+            <h2>props:{{number2}}</h2>
+            <h2> data :{{dnumber2}}</h2>
+            <input type = "text" :value="dnumber2" @input ="num2Input">
+            <!-- <input type="text" v-model="dnumber2"> -->
+            <!-- <input type ="text" v-model = "dnum1" @keyup="ku(dnum1)"> -->
+            <!-- <input type = "text" :value ="dnum1" @input = "numInput"> -->
+        </div>
+    </template>
+
+    <script>
+
+        const cpn={
+            template:'#cpn',
+            props:{
+                number1:Number,
+                number2:Number
+            },
+            data(){
+                return{
+                    dnumber1: this.number1,
+                    dnumber2: this.number2
+                }
+            },
+            methods:{
+                num1Input(event){
+                    this.dnumber1 = event.target.value
+                    this.$emit("num1change",this.dnumber1)
+                },
+                num2Input(event){
+                    this.dnumber2 = event.target.value
+                    this.$emit("num2change",this.dnumber2)
+
+                    this.dnumber1 = this.dnumber2*100
+                    this.$emit("num1change",this.dnumber1)
+                }
+            }
+
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                num1:1,
+                num2:2
+            },
+            methods: {
+                num1change(value){
+                    console.log(value)
+                    this.num1 =parseFloat(value)
+                },
+                num2change(value){
+                    this.num2 = parseFloat(value)
+                }
+
+            },
+            components:{
+                cpn
+            }
+        });
+    </script>
+</body>
+
+</html>

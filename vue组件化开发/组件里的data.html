@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<div id="app">
+    <cmp></cmp>
+    <cmp></cmp>
+    <cmp></cmp>
+</div>
+<body>
+    
+<template id = "cmpt">
+    <div>
+        <span>当前计数 {{count}}</span>
+        <button @click = "add" :disabled ="count>=3">+</button>
+        <button @click = "rdc">-</button>
+    </div>
+
+</template>
+    <script>
+
+        Vue.component('cmp',{
+            template:"#cmpt",
+            data(){
+                return {
+                    count:0
+                }
+            },
+            methods:{
+                add(){
+                    this.count++
+                },
+                rdc(){
+                    this.count--
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                
+            }
+        });
+    </script>
+</body>
+
+</html>

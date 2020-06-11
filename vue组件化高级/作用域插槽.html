@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+
+<body>
+
+    <div id="app">
+        <cpn></cpn>
+        <cpn>
+            <br>
+            <br>
+           <!-- 目的是获取子组件的pLanguage -->
+          <template slot-scope="slot">
+              <span v-for="item in slot.data">{{item}} - </span>
+              <br>
+            <span>{{slot.data.join(' - ')}}</span>
+          </template>
+        </cpn>
+    </div>
+    <template id="cpn">
+        <div>
+           <slot :data="pLanguages"><li v-for="item in pLanguages">{{item}}</li></slot>
+        </div>
+    </template>
+    <script>
+/**
+父组件替换插槽的标签，但是内容是由子组件来提供
+*/
+
+        const cpn = {
+            template:'#cpn',
+            data(){
+                return{
+                   pLanguages: ['javascript','c++','go','java']
+                }
+            }
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isShow:false
+            },
+            methods: {},
+            components:{
+                cpn
+            }
+        });
+    </script>
+</body>
+
+</html>

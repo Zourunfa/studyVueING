@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <h2 v-for="(aim,index) in aims" v-bind:class="{active:index === currentIndex}" @click = "liclick(index)">{{index+1}}{{aim}}</h2>
+
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: "ni hao",
+                active: "active",
+                aims: ['javascript设计模式', 'vue.js', 'react.js'],
+                // isActive:false
+                currentIndex: 0
+            },
+            methods: {
+                liclick:function(index){
+                    this.currentIndex = index
+                   
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+

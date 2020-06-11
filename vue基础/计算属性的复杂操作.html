@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>书的总价格:{{totalPrice}}</h2>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    {id: 110,name:'黄金时代0',price:200},
+                    {id: 111,name:'黄金时代1',price:230},
+                    {id: 112,name:'黄金时代2',price:320},
+                ]
+            },
+            // 计算属性
+            computed:{
+                totalPrice:function(){
+                    // filter/map/reduce
+                    // return this.books.reduce()
+                    let result=0;
+                    // for(let i=0;i<this.books.length;i++){
+                    //     result +=this.books[i].price
+                    // }
+                    
+
+                    // for(let i in this.book){
+                    //     result +=this.books[i].price
+                    // }
+
+                    for(let book of this.books){
+                        result = book.price+result
+                    }
+
+                    return result
+                }
+                
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

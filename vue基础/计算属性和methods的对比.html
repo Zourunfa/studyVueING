@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{fullName}}</h2>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstName:'zhangsan',
+                lastName:'lisi'
+            },
+            computed: {
+                // 属性对象 一般情况下只需要实现的是get方法,下面有更简洁的写法
+                fullName: {
+                    // set一般需要传参
+                    set:function(newValue){
+                        // console.fullName(newValue)
+
+                        const name = newValue.split(' ')
+                        this.firstName = name[0]
+                        this.lastName = name[1]
+                    },
+                    get:function(){
+                        return this.firstName + ' ' + this.lastName
+                    }
+                
+                }
+
+                // 所以可以简写成
+                // fullName:function(){
+                //     return this.firstName + ' ' + this.lastName
+                // }
+
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
